@@ -25,32 +25,4 @@ Components 
 
     Interface: I2C 
 
-    Address: 0x6A 
-
-# Constants 
-
-LAYERCOUNT 
-
-    Int 
-
-    Number of layers that the LIDAR will measure. 
-
-LAYERRES 
-
-    Int 
-
-    Number of sample points per layer, aka layer resolution 
-
-INITANGLE 
-
-    Int (maybe implicit cast as float?) 
-
-    Starting vertical angle for the LIDAR scan 
-
-ENDANGLE 
-
-    Int (also maybe cast as float) 
-
-    Final vertical angle for LIDAR scan, should be tuned to avoid rover body shadow 
-
-    Body shadow creates junk data
+    Address: 0x6A
