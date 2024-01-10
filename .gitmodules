@@ -1,0 +1,3 @@
+[submodule "LW20-Api"]
+	path = LW20-Api
+	url = https://github.com/LightWare-Optoelectronics/LW20-Api.git
