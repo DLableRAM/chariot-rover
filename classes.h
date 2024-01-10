@@ -9,7 +9,7 @@ class quaternion {
     //holds 4 floats, amazing
     public:
         float q1, q2, q3, q4;
-}
+};
 
 class pointmap {
     public:
