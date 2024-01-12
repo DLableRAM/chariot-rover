@@ -13,7 +13,7 @@ class quaternion {
 
 class pointmap {
     public:
-        vector* map[LAYERCOUNT*LAYERRES];
+        vector map[LAYERCOUNT*LAYERRES];
         //should I malloc this? I'll consider it later
 };
 
@@ -39,14 +39,14 @@ class IMUmanager {
 
 class layer {
     public:
-        float* distance[LAYERRES];
-        float* azimuth[LAYERRES];
-        float* elevation[LAYERRES];
+        float distance[LAYERRES];
+        float azimuth[LAYERRES];
+        float elevation[LAYERRES];
 };
 
 class lidardata {
     public:
-        layer* scanlayers[LAYERCOUNT];
+        layer scanlayers[LAYERCOUNT];
 };
 
 class lidarmanager {
