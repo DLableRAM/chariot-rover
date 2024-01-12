@@ -1,14 +1,16 @@
 #include "consts.h"
+#include "LW20-Api/lw20api.h"
+#include "Arduino_LSM6DSOX/src/Arduino_LSM6DSOX.h"
 class vector {
     //Your purpose is to hold 3 floats. That's it.
     public:
         float x, y, z;
 };
 
-class quaternion {
-    //holds 4 floats, amazing
+class DCM {
+    //holds 9 floats, amazing
     public:
-        float q1, q2, q3, q4;
+        float c1, c2, c3, c4, c5, c6, c7, c8, c9;
 };
 
 class pointmap {
@@ -78,9 +80,24 @@ class lidarmanager {
 
         pointmap lidarprocess(lidardata raw) {
             //turn raw lidar data into useful cartesian coordinates
+            pointmap output;
+            int i;
+            int j;
+            for (i = 0; i < LAYERCOUNT; ++i) {
+                for (j = 0; j < LAYERRES; ++j) {
+                    output.map[j * (i + 1)].x = raw.scanlayers[i].distance[j] * cos(DEG_TO_RAD * raw.scanlayers[i].azimuth[j]);
+                    output.map[j * (i + 1)].y = raw.scanlayers[i].distance[j] * sin(DEG_TO_RAD * raw.scanlayers[i].azimuth[j]);
+                    output.map[j * (i + 1)].z = raw.scanlayers[i].distance[j] * sin(DEG_TO_RAD * raw.scanlayers[i].elevation[j]);
+                } 
+            }
+            return output;
         }
 
-        pointmap rotate(pointmap raw, quaternion q) {
-            //rotate pointmap about a quaternion
+        pointmap rotate(pointmap raw, DCM d) {
+            //rotate pointmap about a DCM
         }
 };
+
+class CMD {
+    //manage commands recieved through serial interface
+}
