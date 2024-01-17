@@ -33,15 +33,19 @@ class IMUmanager {
     public:
         IMUdata IMUprocess() {
             IMUdata IMUd;
-            float gx, gy, gz;
-            unsigned long curTime = millis();
-            unsigned long dt = curTime - lastTime;
+            /*Originally I was going to include a sophisticated gyroscope integrator,
+            until I realized we will not be taking constant readings, rendering it
+            entirely useless. So, we'll just read from the accelerometer at standstill
+            instead.*/
+            //float gx, gy, gz;
+            //unsigned long curTime = millis();
+            //unsigned long dt = curTime - lastTime;
             if (IMU.gyroscopeAvailable() && IMU.accelerationAvailable()) {
-                IMU.readGyroscope(gx, gy, gz);
+                //IMU.readGyroscope(gx, gy, gz);
                 IMU.readAcceleration(IMUd.ax, IMUd.ay, IMUd.az);
             }
 
-            float theta_gy = lastThetaY + gy*(static_cast<float>(dt)/1000.0);
+            /*float theta_gy = lastThetaY + gy*(static_cast<float>(dt)/1000.0);
             float theta_ay = RAD_TO_DEG*atan2(IMUd.ax,IMUd.az);
             IMUd.gy = ALPHA*theta_gy + (1.0-ALPHA)*theta_ay;
             lastThetaY = IMUd.gy;
@@ -54,7 +58,12 @@ class IMUmanager {
             float theta_gz = lastThetaZ + gz*(static_cast<float>(dt)/1000.0);
             float theta_az = RAD_TO_DEG*atan2(IMUd.ay,IMUd.ax);
             IMUd.gz = ALPHA*theta_gz + (1.0-ALPHA)*theta_az;
-            lastThetaZ = IMUd.gz;
+            lastThetaZ = IMUd.gz;*/
+
+            IMUd.gy = RAD_TO_DEG*atan2(IMUd.ax,IMUd.az);
+            IMUd.gx = RAD_TO_DEG*atan2(IMUd.ay,IMUd.az);
+            IMUd.gz = RAD_TO_DEG*atan2(IMUd.ay,IMUd.ax);
+
             return IMUd;
         }
 };
