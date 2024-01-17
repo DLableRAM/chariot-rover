@@ -1,5 +1,5 @@
 #include "consts.h"
-#include "LW20-Api/lw20api.h"
+#include "LW20-Api/Arduino/source/LW20.h"
 class vector {
     //Your purpose is to hold 3 floats. That's it.
     public:
@@ -24,7 +24,7 @@ class lidardata {
         layer scanlayers[LAYERCOUNT];
 };
 
-class lidarmanager {
+class lidarmanager : protected LW20 {
     //inherit LW20
     public:
         lidardata scan() {
@@ -47,6 +47,10 @@ class lidarmanager {
         }
 };
 
+class motorcontrol {
+    //mobility controller
+};
+
 class CMD {
     //manage commands recieved through serial interface
-}
+};
