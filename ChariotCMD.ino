@@ -1,6 +1,6 @@
-#include "consts.h"
-#include "classes.h"
-#include "LW20-Api/Arduino/source/LW20.h"
+#include "lmanager.cpp"
+#include "smanager.cpp"
+#include "CMD.cpp"
 
 LW20 lw20(Serial1, 115200);
 
