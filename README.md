@@ -19,10 +19,4 @@ Components 
 
     Interface: I2C 
 
-    Address: 0x66 
-
-    LSM6DSOX 
-
-    Interface: I2C 
-
-    Address: 0x6A
+    Address: 0x66
