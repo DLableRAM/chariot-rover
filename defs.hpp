@@ -1,6 +1,7 @@
 #pragma once
 #include "LW20-Api/Arduino/source/LW20.h"
-#include <memory_resource>
+#include "defs.h"
+#include <Arduino.h>
 //Class defs and global constants go here
 
 //Addresses: I2C, important pins, etc
@@ -12,13 +13,13 @@ static const int steer_fr;
 static const int steer_fl;
 static const int steer_br;
 static const int steer_bl;*/
-//Layer parameters: dictates the LIDAR point count
-static const int LAYERCOUNT = 10;
-static const int LAYERRES = 255;
 
 //Angle parameters: Angle behaviors for LIDAR
 static const int INITANGLE = 0;
 static const int ENDANGLE = 90;
+
+static const int LAYERCOUNT = 255;
+static const int LAYERRES = ENDANGLE-INITANGLE;
 
 class vector {
     //Your purpose is to hold 3 floats. That's it.
@@ -43,15 +44,6 @@ class lidardata {
       layer scanlayers[LAYERCOUNT];
 };
 
-class lidarmanager {
-  //LW20& lidar;
-
-  public:
-    //lidarmanager(LW20& L);
-    pointmap lidarprocess(lidardata raw);
-    lidardata scan(LW20& lidar);
-};
-
 class motorcontrol {
   //mobility controller
 };
@@ -74,6 +66,15 @@ class servocontrol {
     void set_fl(uint8_t val);
     void set_br(uint8_t val);
     void set_bl(uint8_t val);
+};
+
+class lidarmanager {
+  //LW20& lidar;
+
+  public:
+    //lidarmanager(LW20& L);
+    pointmap lidarprocess(lidardata raw);
+    lidardata scan(LW20& lidar, servocontrol& servos);
 };
 
 class CMD {

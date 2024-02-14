@@ -1,6 +1,7 @@
 #include "lmanager.cpp"
 #include "smanager.cpp"
 #include "CMD.cpp"
+#include "mmanager.cpp"
 
 LW20 lw20(Serial1, 115200);
 
