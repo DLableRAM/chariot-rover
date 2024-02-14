@@ -1,7 +1,5 @@
 #pragma once
-#include "LW20-Api/Arduino/source/LW20.h"
-#include "defs.h"
-#include <Arduino.h>
+#include "LW20-Api/Arduino/source/LW20.cpp"
 //Class defs and global constants go here
 
 //Addresses: I2C, important pins, etc
