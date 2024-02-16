@@ -2,6 +2,8 @@
 
 void CMD::run() {
   int command = serial.parseInt("Enter your command: ");
+  const int scancount = 10;
+  int i;
   switch (command) {
     case 1:
       serial.println("Check command ran...");
@@ -18,6 +20,11 @@ void CMD::run() {
       serial.println(lidar.testscan());
       delay(500);
       break;
+    case 2:
+      serial.println("Performing simple LiDAR test...");
+      for (i = 0; i < scancount; ++i) {
+        serial.println(lidar.testscan());
+      }
     default:
       serial.println("Command not recognized.");
   }
