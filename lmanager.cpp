@@ -1,6 +1,6 @@
 #include "defs.hpp" 
 
-lidardata lidarmanager::scan(LW20& lidar, servocontrol& servos) {
+lidardata lidarmanager::scan() {
   lidardata output;
   //define iterators
   int i;
@@ -12,7 +12,7 @@ lidardata lidarmanager::scan(LW20& lidar, servocontrol& servos) {
       servos.set_el(j);
       float distance = lidar.getLaserDistance(LWPT_FIRST, LWRF_RAW);
       //get LIDAR value
-      //Angles MUST be in radians!
+      //Angles MUST be converted from servo PWM to radians!
       //output.scanlayers[i].distance[j] = ...
       //output.scanlayers[i].elevation[j] = ...
       //output.scanlayers[i].azimuth[j] = ...

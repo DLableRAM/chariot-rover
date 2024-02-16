@@ -1,3 +1,4 @@
+#include <wire.h>
 #include "lmanager.cpp"
 #include "smanager.cpp"
 #include "CMD.cpp"
@@ -17,15 +18,14 @@ void setup()
 
     // Basic Setup.
     lw20.setLaserParams(LWMS_48);
+    servocontrol serv();
+    lidarmanager lidar(lw20, serv);
+    motorcontrol motors();
+
+    CMD CMD(Serial, lidar, serv, motors);
 }
 
 void loop() 
 {
-    //API reading examples
-    float distance = lw20.getLaserDistance(LWPT_FIRST, LWRF_RAW);
-    float temperature = lw20.getLaserTemperature();
-
-    Serial.print("Distance: "); Serial.print(distance); Serial.print(" - Temp: "); Serial.println(temperature);
-  
-    delay(25);
+  CMD.run();
 }

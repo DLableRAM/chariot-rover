@@ -57,24 +57,32 @@ class servocontrol {
   //servo controller
   public:
     void activate_pins();
-    void set_az(uint8_t val);
-    void set_el(uint8_t val);
-    void set_dp(uint8_t val);
-    void set_fr(uint8_t val);
-    void set_fl(uint8_t val);
-    void set_br(uint8_t val);
-    void set_bl(uint8_t val);
+    void set_az(uint8_t val) {az = val}
+    void set_el(uint8_t val) {el = val}
+    void set_dp(uint8_t val) {dp = val}
+    void set_fr(uint8_t val) {fr = val}
+    void set_fl(uint8_t val) {fl = val}
+    void set_br(uint8_t val) {br = val}
+    void set_bl(uint8_t val) {bl = val}
 };
 
 class lidarmanager {
-  //LW20& lidar;
-
+  LW20& lidar;
+  servocontrol& servos;
   public:
-    //lidarmanager(LW20& L);
+    lidarmanager(LW20& L, servocontrol& s) : lidar(L), servos(s) { }
     pointmap lidarprocess(lidardata raw);
-    lidardata scan(LW20& lidar, servocontrol& servos);
+    lidardata scan();
 };
 
 class CMD {
-    //manage commands recieved through serial interface
+  HardwareSerial& serial;
+  lidarmanager& lidar;
+  servocontrol& servos;
+  motorcontrol& motors;
+  //manage commands recieved through serial interface
+  public:
+    CMD(HardwareSerial& s, lidarmanager& l,
+        servocontrol& sc, motorcontrol& m) : serial(s), lidar(l), servos(sc), motors(m) { }
+    void run();
 };
