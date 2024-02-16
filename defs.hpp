@@ -76,6 +76,7 @@ class lidarmanager {
     lidarmanager(LW20& L, servocontrol& s) : lidar(L), servos(s) { }
     pointmap lidarprocess(lidardata raw);
     lidardata scan();
+    float testscan();
 };
 
 class CMD {

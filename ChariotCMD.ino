@@ -4,6 +4,7 @@
 #include "CMD.cpp"
 #include "mmanager.cpp"
 
+//UART Serial1(tx, rx, 0, 0)
 LW20 lw20(Serial1, 115200);
 
 void setup() 
@@ -11,7 +12,7 @@ void setup()
     //TODO: Better error checking on startup.
     // Start serial monitor port.
     Serial.begin(115200);
-    while(!serial);
+    while(!Serial);
 
     // Setup LW20.
     lw20.init();

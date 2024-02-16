@@ -18,6 +18,7 @@ lidardata lidarmanager::scan() {
       //output.scanlayers[i].azimuth[j] = ...
     }
   }
+  return output;
 }
 
 pointmap lidarmanager::lidarprocess(lidardata raw) {
@@ -33,4 +34,9 @@ pointmap lidarmanager::lidarprocess(lidardata raw) {
     } 
   }
   return output;
+}
+
+float lidarmanager::testscan() {
+  float out = lidar.getLaserDistance(LWPT_FIRST, LWRF_RAW);
+  return out;
 }
