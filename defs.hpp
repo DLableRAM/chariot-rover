@@ -10,7 +10,9 @@ static const int lidar_deploy;
 static const int steer_fr;
 static const int steer_fl;
 static const int steer_br;
-static const int steer_bl;*/
+static const int steer_bl;
+static const int motor_F;
+static const int motor_B*/
 
 //Angle parameters: Angle behaviors for LIDAR
 static const int INITANGLE = 0;
@@ -43,7 +45,8 @@ class lidardata {
 };
 
 class motorcontrol {
-  //mobility controller
+  public:
+    void move(int f, int b);
 };
 
 class servocontrol {
