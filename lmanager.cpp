@@ -28,9 +28,9 @@ pointmap lidarmanager::lidarprocess(lidardata raw) {
     int j;
     for (i = 0; i < LAYERCOUNT; ++i) {
       for (j = 0; j < LAYERRES; ++j) {
-        output.map[j * (i + 1)].x = raw.scanlayers[i].distance[j] * cos(raw.scanlayers[i].azimuth[j]);
-        output.map[j * (i + 1)].y = raw.scanlayers[i].distance[j] * sin(raw.scanlayers[i].azimuth[j]);
-        output.map[j * (i + 1)].z = raw.scanlayers[i].distance[j] * sin(raw.scanlayers[i].elevation[j]);
+        output.map[i * LAYERRES + j].x = raw.scanlayers[i].distance[j] * cos(raw.scanlayers[i].azimuth[j]);
+        output.map[i * LAYERRES + j].y = raw.scanlayers[i].distance[j] * sin(raw.scanlayers[i].azimuth[j]);
+        output.map[i * LAYERRES + j].z = raw.scanlayers[i].distance[j] * sin(raw.scanlayers[i].elevation[j]);
     } 
   }
   return output;

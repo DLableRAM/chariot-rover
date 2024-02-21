@@ -68,7 +68,8 @@ void CMD::run() {
       }
       break;
     case 4:
-      //steer command, write later
+      //steer command, it's going to depend heavily on servo orientation
+      //fun!
       break;
     case 5:
       serial.println("Performing scan, please wait.");
