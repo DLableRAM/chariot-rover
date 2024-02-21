@@ -1,4 +1,4 @@
-#include <wire.h>
+//#include <wire.h>
 #include "lmanager.cpp"
 #include "smanager.cpp"
 #include "CMD.cpp"
@@ -28,5 +28,14 @@ void setup()
 
 void loop() 
 {
+  //check emergency shutoff
+  if (!Serial) {
+    motors.move(0, 0);
+    serv.set_dp(RETANGLE);
+    serv.activate_pins();
+    //possibly break from program? might be safer.
+    //break;
+    while(!Serial);
+  }
   CMD.run();
 }

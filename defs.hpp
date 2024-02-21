@@ -4,19 +4,22 @@
 
 //Addresses: I2C, important pins, etc
 static const int ADDR_LIDAR = 0x66;
-/*static const int lidar_azimuth;
-static const int lidar_elevation;
-static const int lidar_deploy;
-static const int steer_fr;
-static const int steer_fl;
-static const int steer_br;
-static const int steer_bl;
-static const int motor_F;
-static const int motor_B*/
+static const int lidar_azimuth = 0;
+static const int lidar_elevation = 0;
+static const int lidar_deploy = 0;
+static const int steer_fr = 0;
+static const int steer_fl = 0;
+static const int steer_br = 0;
+static const int steer_bl = 0;
+static const int motor_F = 0;
+static const int motor_B = 0;
 
 //Angle parameters: Angle behaviors for LIDAR
 static const int INITANGLE = 0;
 static const int ENDANGLE = 90;
+//retracted and deployed lidar arm angle
+static const int RETANGLE = 0;
+static const int DEPANGLE = 0;
 
 static const int LAYERCOUNT = 255;
 static const int LAYERRES = ENDANGLE-INITANGLE;
