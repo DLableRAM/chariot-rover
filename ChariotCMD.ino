@@ -13,7 +13,7 @@ void setup()
     // Start serial monitor port.
     Serial.begin(115200);
     while(!Serial);
-
+    Serial1.begin(115200);
     // Setup LW20.
     lw20.init();
 

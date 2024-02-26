@@ -75,8 +75,14 @@ void CMD::run() {
       serial.println("Performing scan, please wait.");
       ldata = lidar.scan();
       pmap = lidar.lidarprocess(ldata);
-      serial.println("Scan complete!");
-      //export options
+      serial.println("Scan complete, exporting to serial:");
+      for (i = 0; i < LAYERRES*LAYERCOUNT; ++i) {
+        serial.print(pmap.map[i].x);
+        serial.print(", ");
+        serial.print(pmap.map[i].y);
+        serial.print(", ");
+        serial.println(pmap.map[i].z);
+      }
       break;
     default:
       serial.println("Command not recognized.");
