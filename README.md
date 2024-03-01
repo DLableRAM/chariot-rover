@@ -7,8 +7,6 @@ The Chariot control system utilizes the following libraries: 
 
     LW20 API (LIDAR) 
 
-    LSM6DSOX (Accelerometer/gyro) 
-
 Components 
 
     Raspberry Pi Pico 
