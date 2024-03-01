@@ -1,6 +1,8 @@
 //#include <wire.h>
 #include "defs.hpp"
 
+//On the pi pico, Serial1 will be enabled by default
+//At least it SHOULD be
 //UART Serial1(tx, rx, 0, 0)
 LW20 lw20(Serial1, 115200);
 
