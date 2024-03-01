@@ -1,8 +1,5 @@
 //#include <wire.h>
-#include "lmanager.cpp"
-#include "smanager.cpp"
-#include "CMD.cpp"
-#include "mmanager.cpp"
+#include "defs.hpp"
 
 //UART Serial1(tx, rx, 0, 0)
 LW20 lw20(Serial1, 115200);
