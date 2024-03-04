@@ -1,7 +1,8 @@
 #include "defs.hpp"
 
 void CMD::run() {
-  int command = serial.parseInt("Enter your command: ");
+  serial.print("Enter command: ");
+  int command = serial.parseInt();
   int speed;
   const int scancount = 10;
   int i;
@@ -57,7 +58,8 @@ void CMD::run() {
       break;
     case 3:
       serial.println("Entering move mode...");
-      speed = serial.parseInt("How fast (255 max speed, -255 max reverse): ");
+      serial.print("How fast (255 max speed, -255 max reverse): ");
+      speed = serial.parseInt();
       if (speed >= 0) {
         motors.move(speed, 0);
       } else {

@@ -1,5 +1,8 @@
 #pragma once
-#include "LW20-Api/Arduino/source/LW20.cpp"
+#include <stdint.h>
+#include <Arduino.h>
+#include <inttypes.h>
+#include "LW20.h"
 //Class defs and global constants go here
 
 //Addresses: I2C, important pins, etc
@@ -63,13 +66,13 @@ class servocontrol {
   //servo controller
   public:
     void activate_pins();
-    void set_az(uint8_t val) {az = val}
-    void set_el(uint8_t val) {el = val}
-    void set_dp(uint8_t val) {dp = val}
-    void set_fr(uint8_t val) {fr = val}
-    void set_fl(uint8_t val) {fl = val}
-    void set_br(uint8_t val) {br = val}
-    void set_bl(uint8_t val) {bl = val}
+    void set_az(uint8_t val) {az = val;}
+    void set_el(uint8_t val) {el = val;}
+    void set_dp(uint8_t val) {dp = val;}
+    void set_fr(uint8_t val) {fr = val;}
+    void set_fl(uint8_t val) {fl = val;}
+    void set_br(uint8_t val) {br = val;}
+    void set_bl(uint8_t val) {bl = val;}
 };
 
 class lidarmanager {
